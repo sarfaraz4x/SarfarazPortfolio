@@ -166,6 +166,113 @@ section[id] {
     scroll-margin-top: 100px;
 }
 
+/* Advanced creative animations */
+@keyframes morphing {
+    0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); }
+    25% { transform: translateY(-10px) scale(1.05) rotate(2deg); }
+    50% { transform: translateY(-5px) scale(0.95) rotate(-1deg); }
+    75% { transform: translateY(-15px) scale(1.02) rotate(1deg); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+.animate-morphing {
+    animation: morphing 6s ease-in-out infinite;
+}
+
+.animate-sparkle {
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.animate-rainbow {
+    animation: rainbow 3s linear infinite;
+}
+
+/* Enhanced hover effects for cards */
+.card-enhanced:hover {
+    transform: translateY(-10px) scale(1.02);
+    filter: brightness(1.1);
+}
+
+/* Particle trail effect */
+.particle-trail {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: trail 1s ease-out forwards;
+}
+
+@keyframes trail {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0); }
+}
+
+/* Glass reflection effect */
+.glass-reflection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+}
+
+.glass-reflection:hover::before {
+    left: 100%;
+}
+
+/* Enhanced button effects */
+.btn-enhanced {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.btn-enhanced:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Text glow effect */
+.text-glow {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+}
+
+/* Improved mobile responsiveness */
+@media (max-width: 640px) {
+    .animate-morphing {
+        animation-duration: 8s;
+    }
+    
+    .card-enhanced:hover {
+        transform: translateY(-5px) scale(1.01);
+    }
+}
+
 /* Enhanced hover effects for cards */
 .bg-white:hover,
 .bg-gray-50:hover {
