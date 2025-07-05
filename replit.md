@@ -76,7 +76,8 @@ This is a static portfolio website for Sarfaraz Alam, an electrical engineering 
 - Efficient DOM manipulation with vanilla JavaScript
 
 ## Changelog
-- July 05, 2025. Initial setup
+- July 05, 2025: Initial setup
+- July 05, 2025: Complete redesign with stunning dark theme, glass morphism effects, gradient animations, and modern visual aesthetics
 
 ## User Preferences
 

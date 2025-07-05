@@ -144,11 +144,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add typing effect to main heading (optional enhancement)
+    // Enhanced typing effect for main heading
     function addTypingEffect() {
-        const heading = document.querySelector('h1');
-        if (heading && heading.textContent === 'Sarfaraz Alam') {
-            const text = heading.textContent;
+        const heading = document.getElementById('typing-name');
+        if (heading) {
+            const text = 'Sarfaraz Alam';
             heading.textContent = '';
             
             let i = 0;
@@ -156,17 +156,88 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (i < text.length) {
                     heading.textContent += text.charAt(i);
                     i++;
-                    setTimeout(typeWriter, 100);
+                    setTimeout(typeWriter, 150);
+                } else {
+                    // Add cursor blink effect
+                    heading.innerHTML += '<span class="animate-pulse">|</span>';
+                    setTimeout(() => {
+                        const cursor = heading.querySelector('span');
+                        if (cursor) cursor.remove();
+                    }, 3000);
                 }
             };
             
             // Start typing effect after a short delay
-            setTimeout(typeWriter, 500);
+            setTimeout(typeWriter, 1000);
         }
     }
     
-    // Uncomment to enable typing effect
-    // addTypingEffect();
+    // Enable typing effect
+    addTypingEffect();
+    
+    // Create particle system
+    function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'absolute w-1 h-1 bg-purple-400/30 rounded-full';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            particle.classList.add('animate-float');
+            particlesContainer.appendChild(particle);
+        }
+    }
+    
+    // Initialize particle system
+    createParticles();
+    
+    // Interactive cursor effect
+    function createCursorEffect() {
+        const cursor = document.createElement('div');
+        cursor.className = 'fixed w-6 h-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-300';
+        cursor.style.left = '-100px';
+        cursor.style.top = '-100px';
+        document.body.appendChild(cursor);
+        
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            
+            cursor.style.left = cursorX - 12 + 'px';
+            cursor.style.top = cursorY - 12 + 'px';
+            
+            requestAnimationFrame(animateCursor);
+        }
+        
+        animateCursor();
+        
+        // Scale cursor on hover
+        document.querySelectorAll('a, button, .group').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2)';
+            });
+            element.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+            });
+        });
+    }
+    
+    // Only add cursor effect on desktop
+    if (window.innerWidth > 768) {
+        createCursorEffect();
+    }
 });
 
 // Add scroll-to-top functionality

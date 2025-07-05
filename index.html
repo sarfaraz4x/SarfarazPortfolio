@@ -6,31 +6,61 @@
     <title>Sarfaraz Alam - Electrical Engineering Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'gradient': 'gradient 8s ease infinite',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white font-inter overflow-x-hidden">
+    <!-- Animated Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -right-32 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
+        <div class="absolute -bottom-40 -left-32 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style="animation-delay: 4s;"></div>
+    </div>
+    
+    <!-- Particle System -->
+    <div id="particles" class="fixed inset-0 pointer-events-none"></div>
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+    <nav class="backdrop-blur-lg bg-white/10 border-b border-white/20 fixed w-full top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
-                    <h1 class="text-xl font-bold text-blue-600">Sarfaraz Alam</h1>
+                    <h1 class="text-2xl font-bold font-playfair bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        Sarfaraz Alam
+                    </h1>
                 </div>
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#about" class="nav-link hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">About</a>
-                        <a href="#education" class="nav-link hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Education</a>
-                        <a href="#skills" class="nav-link hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Skills</a>
-                        <a href="#projects" class="nav-link hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Projects</a>
-                        <a href="#contact" class="nav-link hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Contact</a>
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="nav-link text-white/90 hover:text-purple-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative">About</a>
+                        <a href="#education" class="nav-link text-white/90 hover:text-purple-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative">Education</a>
+                        <a href="#skills" class="nav-link text-white/90 hover:text-purple-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative">Skills</a>
+                        <a href="#projects" class="nav-link text-white/90 hover:text-purple-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative">Projects</a>
+                        <a href="#contact" class="nav-link text-white/90 hover:text-purple-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative">Contact</a>
                     </div>
                 </div>
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-white/90 hover:text-purple-400 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
@@ -39,87 +69,198 @@
         
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="md:hidden hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-                <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">About</a>
-                <a href="#education" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Education</a>
-                <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Skills</a>
-                <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Projects</a>
-                <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact</a>
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 backdrop-blur-lg bg-slate-900/90 border-t border-white/20">
+                <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-purple-400 hover:bg-white/10">About</a>
+                <a href="#education" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-purple-400 hover:bg-white/10">Education</a>
+                <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-purple-400 hover:bg-white/10">Skills</a>
+                <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-purple-400 hover:bg-white/10">Projects</a>
+                <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-white/90 hover:text-purple-400 hover:bg-white/10">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero/About Section -->
-    <section id="about" class="pt-20 pb-16 bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" class="relative min-h-screen flex items-center justify-center pt-20 pb-16 overflow-hidden">
+        <!-- Geometric Background Elements -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-64 h-64 border border-purple-400 rotate-45 animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-48 h-48 border border-pink-400 rotate-12 animate-pulse" style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/2 left-1/4 w-32 h-32 border border-blue-400 rotate-90 animate-pulse" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
-                <div class="w-32 h-32 bg-blue-600 rounded-full mx-auto mb-8 flex items-center justify-center">
-                    <i class="fas fa-user text-white text-5xl"></i>
+                <!-- Animated Avatar -->
+                <div class="relative mb-12">
+                    <div class="w-40 h-40 mx-auto relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 rounded-full animate-glow"></div>
+                        <div class="absolute inset-2 bg-gradient-to-br from-slate-800 to-slate-900 rounded-full flex items-center justify-center">
+                            <i class="fas fa-bolt text-purple-400 text-5xl animate-pulse"></i>
+                        </div>
+                    </div>
+                    <!-- Floating Icons -->
+                    <div class="absolute -top-4 -right-4 w-8 h-8 bg-purple-500/20 backdrop-blur-lg rounded-full flex items-center justify-center animate-float">
+                        <i class="fas fa-microchip text-purple-400 text-sm"></i>
+                    </div>
+                    <div class="absolute -bottom-4 -left-4 w-8 h-8 bg-blue-500/20 backdrop-blur-lg rounded-full flex items-center justify-center animate-float" style="animation-delay: 1s;">
+                        <i class="fas fa-code text-blue-400 text-sm"></i>
+                    </div>
                 </div>
-                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4">Sarfaraz Alam</h1>
-                <h2 class="text-xl md:text-2xl text-blue-600 font-semibold mb-6">Electrical Engineering Student</h2>
-                <p class="text-lg text-gray-600 mb-4">B.Tech, 6th Semester</p>
-                <p class="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed mb-8">
-                    An ardent individual focused in Electrical Engineering looking for opportunities to join an organization where I can utilize my skills to make a significant contribution to the success of the company alongside elevating my skills.
-                </p>
-                <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 transform hover:scale-105">
-                    <i class="fas fa-download mr-2"></i>
-                    Download Resume
-                </button>
+                
+                <!-- Typing Animation Container -->
+                <div class="mb-6">
+                    <h1 id="typing-name" class="text-5xl md:text-7xl font-bold font-playfair bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4 min-h-[1.2em]"></h1>
+                </div>
+                
+                <div class="space-y-4 mb-8">
+                    <h2 class="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
+                        Electrical Engineering Student
+                    </h2>
+                    <p class="text-lg text-purple-200 font-medium">B.Tech, 6th Semester</p>
+                </div>
+                
+                <!-- Animated Description -->
+                <div class="max-w-4xl mx-auto mb-12">
+                    <p class="text-xl text-gray-300 leading-relaxed opacity-0 animate-slide-up" style="animation-delay: 3s; animation-fill-mode: forwards;">
+                        An ardent individual focused in Electrical Engineering looking for opportunities to join an organization where I can utilize my skills to make a significant contribution to the success of the company alongside elevating my skills.
+                    </p>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <button class="group relative bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25">
+                        <span class="relative z-10 flex items-center">
+                            <i class="fas fa-download mr-3 group-hover:animate-bounce"></i>
+                            Download Resume
+                        </span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </button>
+                    
+                    <button class="group border-2 border-purple-400/50 text-purple-300 hover:text-white hover:bg-purple-500/20 font-semibold py-4 px-8 rounded-full transition-all duration-300 backdrop-blur-lg">
+                        <span class="flex items-center">
+                            <i class="fas fa-eye mr-3 group-hover:animate-pulse"></i>
+                            View Projects
+                        </span>
+                    </button>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                    <i class="fas fa-chevron-down text-purple-400 text-2xl opacity-60"></i>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Education</h2>
-                <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+    <section id="education" class="py-20 relative overflow-hidden">
+        <!-- Section Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-purple-900/50 backdrop-blur-sm"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-playfair bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+                    Educational Journey
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-4"></div>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">Building excellence through continuous learning and academic achievement</p>
             </div>
             
-            <div class="space-y-8">
-                <!-- Education Item 1 -->
-                <div class="bg-gray-50 rounded-lg p-6 md:p-8 transform hover:scale-105 transition-transform duration-200">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Bachelor of Technology (B.Tech)</h3>
-                            <p class="text-blue-600 font-medium mb-2">BIT Sindri, Dhanbad</p>
-                            <p class="text-gray-600">Electrical Engineering</p>
-                        </div>
-                        <div class="mt-4 md:mt-0 text-right">
-                            <p class="text-lg font-semibold text-green-600">CGPA: 6.8</p>
-                            <p class="text-gray-500">Expected 2026</p>
+            <!-- Timeline -->
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-pink-500 to-blue-500"></div>
+                
+                <div class="space-y-12">
+                    <!-- Education Item 1 -->
+                    <div class="relative flex items-center">
+                        <!-- Timeline Dot -->
+                        <div class="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-slate-900 z-10"></div>
+                        
+                        <!-- Content Card -->
+                        <div class="ml-16 md:ml-0 md:w-5/12 md:ml-auto group">
+                            <div class="bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-lg border border-purple-500/20 rounded-2xl p-8 transform hover:scale-105 hover:rotate-1 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/25">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg mb-4">
+                                        <i class="fas fa-graduation-cap text-white text-xl"></i>
+                                    </div>
+                                    <span class="text-sm text-purple-300 bg-purple-500/20 px-3 py-1 rounded-full">Current</span>
+                                </div>
+                                
+                                <h3 class="text-2xl font-bold text-white mb-3 font-playfair">Bachelor of Technology</h3>
+                                <p class="text-purple-300 font-semibold mb-2">BIT Sindri, Dhanbad</p>
+                                <p class="text-gray-300 mb-4">Electrical Engineering</p>
+                                
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="text-green-400 font-bold text-lg">CGPA: 6.8</p>
+                                        <p class="text-gray-400 text-sm">Expected 2026</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-400 rounded-full flex items-center justify-center">
+                                            <span class="text-white font-bold text-sm">68%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Education Item 2 -->
-                <div class="bg-gray-50 rounded-lg p-6 md:p-8 transform hover:scale-105 transition-transform duration-200">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Class XII (Higher Secondary)</h3>
-                            <p class="text-blue-600 font-medium mb-2">Delhi Public School, Pakur</p>
-                            <p class="text-gray-600">Science Stream</p>
-                        </div>
-                        <div class="mt-4 md:mt-0 text-right">
-                            <p class="text-lg font-semibold text-green-600">84.2%</p>
-                            <p class="text-gray-500">2021</p>
+                    
+                    <!-- Education Item 2 -->
+                    <div class="relative flex items-center">
+                        <div class="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full border-4 border-slate-900 z-10"></div>
+                        
+                        <div class="ml-16 md:ml-0 md:w-5/12 md:mr-auto group">
+                            <div class="bg-gradient-to-br from-pink-900/20 to-blue-900/20 backdrop-blur-lg border border-pink-500/20 rounded-2xl p-8 transform hover:scale-105 hover:-rotate-1 transition-all duration-300 hover:shadow-2xl hover:shadow-pink-500/25">
+                                <div class="p-3 bg-gradient-to-r from-pink-500 to-blue-500 rounded-lg mb-4 w-fit">
+                                    <i class="fas fa-school text-white text-xl"></i>
+                                </div>
+                                
+                                <h3 class="text-2xl font-bold text-white mb-3 font-playfair">Higher Secondary</h3>
+                                <p class="text-pink-300 font-semibold mb-2">Delhi Public School, Pakur</p>
+                                <p class="text-gray-300 mb-4">Science Stream</p>
+                                
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="text-green-400 font-bold text-lg">84.2%</p>
+                                        <p class="text-gray-400 text-sm">Completed 2021</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center">
+                                            <span class="text-white font-bold text-sm">84%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Education Item 3 -->
-                <div class="bg-gray-50 rounded-lg p-6 md:p-8 transform hover:scale-105 transition-transform duration-200">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Class X (Secondary)</h3>
-                            <p class="text-blue-600 font-medium mb-2">St. Lawrence Academy, Patna</p>
-                            <p class="text-gray-600">CBSE Board</p>
-                        </div>
-                        <div class="mt-4 md:mt-0 text-right">
-                            <p class="text-lg font-semibold text-green-600">77.8%</p>
-                            <p class="text-gray-500">2019</p>
+                    
+                    <!-- Education Item 3 -->
+                    <div class="relative flex items-center">
+                        <div class="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full border-4 border-slate-900 z-10"></div>
+                        
+                        <div class="ml-16 md:ml-0 md:w-5/12 md:ml-auto group">
+                            <div class="bg-gradient-to-br from-blue-900/20 to-purple-900/20 backdrop-blur-lg border border-blue-500/20 rounded-2xl p-8 transform hover:scale-105 hover:rotate-1 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25">
+                                <div class="p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg mb-4 w-fit">
+                                    <i class="fas fa-book text-white text-xl"></i>
+                                </div>
+                                
+                                <h3 class="text-2xl font-bold text-white mb-3 font-playfair">Secondary School</h3>
+                                <p class="text-blue-300 font-semibold mb-2">St. Lawrence Academy, Patna</p>
+                                <p class="text-gray-300 mb-4">CBSE Board</p>
+                                
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="text-green-400 font-bold text-lg">77.8%</p>
+                                        <p class="text-gray-400 text-sm">Completed 2019</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center">
+                                            <span class="text-white font-bold text-sm">78%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -128,210 +269,327 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-16 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
-                <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+    <section id="skills" class="py-20 relative overflow-hidden">
+        <!-- Dynamic Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-slate-900 to-blue-900/30"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-playfair bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+                    Skills & Expertise
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-4"></div>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">Combining technical proficiency with essential soft skills to deliver outstanding results</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid lg:grid-cols-3 gap-8">
                 <!-- Technical Skills -->
-                <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
-                    <div class="text-center mb-6">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <i class="fas fa-code text-blue-600 text-2xl"></i>
+                <div class="group relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-purple-900/40 to-pink-900/40 backdrop-blur-lg border border-purple-500/30 rounded-2xl p-8 h-full transform hover:scale-105 transition-all duration-300">
+                        <div class="text-center mb-8">
+                            <div class="relative w-20 h-20 mx-auto mb-6">
+                                <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-glow"></div>
+                                <div class="absolute inset-1 bg-slate-900 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-microchip text-purple-400 text-3xl"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white font-playfair">Technical Skills</h3>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900">Technical Skills</h3>
+                        <div class="space-y-4">
+                            <div class="skill-item flex items-center group/item">
+                                <div class="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-4 group-hover/item:animate-pulse"></div>
+                                <span class="text-gray-300 group-hover/item:text-white transition-colors">Video Editing</span>
+                            </div>
+                            <div class="skill-item flex items-center group/item">
+                                <div class="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-4 group-hover/item:animate-pulse"></div>
+                                <span class="text-gray-300 group-hover/item:text-white transition-colors">MS Excel</span>
+                            </div>
+                            <div class="skill-item flex items-center group/item">
+                                <div class="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-4 group-hover/item:animate-pulse"></div>
+                                <span class="text-gray-300 group-hover/item:text-white transition-colors">MS Word</span>
+                            </div>
+                            <div class="skill-item flex items-center group/item">
+                                <div class="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-4 group-hover/item:animate-pulse"></div>
+                                <span class="text-gray-300 group-hover/item:text-white transition-colors">MATLAB</span>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="space-y-3">
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                            <span>Video Editing</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                            <span>MS Excel</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                            <span>MS Word</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                            <span>MATLAB</span>
-                        </li>
-                    </ul>
                 </div>
                 
                 <!-- Soft Skills -->
-                <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
-                    <div class="text-center mb-6">
-                        <div class="w-16 h-16 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <i class="fas fa-users text-green-600 text-2xl"></i>
+                <div class="group relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-blue-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-pink-900/40 to-blue-900/40 backdrop-blur-lg border border-pink-500/30 rounded-2xl p-8 h-full transform hover:scale-105 transition-all duration-300">
+                        <div class="text-center mb-8">
+                            <div class="relative w-20 h-20 mx-auto mb-6">
+                                <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-blue-500 rounded-full animate-glow"></div>
+                                <div class="absolute inset-1 bg-slate-900 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-users text-pink-400 text-3xl"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white font-playfair">Soft Skills</h3>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900">Soft Skills</h3>
+                        <div class="space-y-4">
+                            <div class="skill-item flex items-center group/item">
+                                <div class="w-3 h-3 bg-gradient-to-r from-pink-400 to-blue-400 rounded-full mr-4 group-hover/item:animate-pulse"></div>
+                                <span class="text-gray-300 group-hover/item:text-white transition-colors">Adaptability</span>
+                            </div>
+                            <div class="skill-item flex items-center group/item">
+                                <div class="w-3 h-3 bg-gradient-to-r from-pink-400 to-blue-400 rounded-full mr-4 group-hover/item:animate-pulse"></div>
+                                <span class="text-gray-300 group-hover/item:text-white transition-colors">Teamwork</span>
+                            </div>
+                            <div class="skill-item flex items-center group/item">
+                                <div class="w-3 h-3 bg-gradient-to-r from-pink-400 to-blue-400 rounded-full mr-4 group-hover/item:animate-pulse"></div>
+                                <span class="text-gray-300 group-hover/item:text-white transition-colors">Communication</span>
+                            </div>
+                            <div class="skill-item flex items-center group/item">
+                                <div class="w-3 h-3 bg-gradient-to-r from-pink-400 to-blue-400 rounded-full mr-4 group-hover/item:animate-pulse"></div>
+                                <span class="text-gray-300 group-hover/item:text-white transition-colors">Time Management</span>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="space-y-3">
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                            <span>Adaptability</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                            <span>Teamwork</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                            <span>Communication</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                            <span>Time Management</span>
-                        </li>
-                    </ul>
                 </div>
                 
                 <!-- Hobbies/Interests -->
-                <div class="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
-                    <div class="text-center mb-6">
-                        <div class="w-16 h-16 bg-purple-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <i class="fas fa-heart text-purple-600 text-2xl"></i>
+                <div class="group relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-lg border border-blue-500/30 rounded-2xl p-8 h-full transform hover:scale-105 transition-all duration-300">
+                        <div class="text-center mb-8">
+                            <div class="relative w-20 h-20 mx-auto mb-6">
+                                <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-glow"></div>
+                                <div class="absolute inset-1 bg-slate-900 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-heart text-blue-400 text-3xl"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white font-playfair">Interests</h3>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900">Hobbies & Interests</h3>
+                        <div class="space-y-4">
+                            <div class="skill-item flex items-center group/item">
+                                <i class="fas fa-swimming-pool text-blue-400 w-4 mr-4 group-hover/item:animate-bounce"></i>
+                                <span class="text-gray-300 group-hover/item:text-white transition-colors">Swimming</span>
+                            </div>
+                            <div class="skill-item flex items-center group/item">
+                                <i class="fas fa-chess text-purple-400 w-4 mr-4 group-hover/item:animate-bounce"></i>
+                                <span class="text-gray-300 group-hover/item:text-white transition-colors">Chess</span>
+                            </div>
+                            <div class="skill-item flex items-center group/item">
+                                <i class="fas fa-utensils text-orange-400 w-4 mr-4 group-hover/item:animate-bounce"></i>
+                                <span class="text-gray-300 group-hover/item:text-white transition-colors">Cooking</span>
+                            </div>
+                            <div class="skill-item flex items-center group/item">
+                                <i class="fas fa-globe text-green-400 w-4 mr-4 group-hover/item:animate-bounce"></i>
+                                <span class="text-gray-300 group-hover/item:text-white transition-colors">World Affairs</span>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="space-y-3">
-                        <li class="flex items-center">
-                            <i class="fas fa-swimming-pool text-blue-500 mr-3"></i>
-                            <span>Swimming</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-chess text-gray-700 mr-3"></i>
-                            <span>Chess</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-utensils text-orange-500 mr-3"></i>
-                            <span>Cooking</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-globe text-green-500 mr-3"></i>
-                            <span>World Affairs</span>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Projects</h2>
-                <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+    <section id="projects" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-800/50 to-purple-900/50 backdrop-blur-sm"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-playfair bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+                    Featured Projects
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-4"></div>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">Innovative engineering solutions and creative implementations showcasing technical expertise</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200">
-                    <div class="text-center mb-4">
-                        <div class="w-16 h-16 bg-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <i class="fas fa-bolt text-white text-2xl"></i>
+                <div class="group relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-blue-900/40 to-cyan-900/40 backdrop-blur-lg border border-blue-500/30 rounded-2xl p-8 h-full transform hover:scale-105 hover:-rotate-1 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25">
+                        <div class="text-center mb-6">
+                            <div class="relative w-20 h-20 mx-auto mb-6">
+                                <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full animate-glow"></div>
+                                <div class="absolute inset-1 bg-slate-900 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-bolt text-blue-400 text-3xl animate-pulse"></i>
+                                </div>
+                            </div>
+                            <span class="inline-block bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm font-medium mb-4">Hardware</span>
+                            <h3 class="text-2xl font-bold text-white mb-2 font-playfair">DC to AC Converter</h3>
+                            <p class="text-blue-300 font-medium">Mini Hardware Project</p>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">DC to AC Converter</h3>
-                        <p class="text-blue-600 font-medium">Mini Hardware Project</p>
+                        <p class="text-gray-300 leading-relaxed mb-6">A functional DC to AC power converter demonstrating electrical engineering principles and advanced circuit design techniques.</p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+                                <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                                <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+                            </div>
+                            <div class="text-blue-300 text-sm group-hover:text-white transition-colors">View Details →</div>
+                        </div>
                     </div>
-                    <p class="text-gray-600 text-center">A functional DC to AC power converter demonstrating electrical engineering principles and circuit design.</p>
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200">
-                    <div class="text-center mb-4">
-                        <div class="w-16 h-16 bg-red-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <i class="fas fa-fire-extinguisher text-white text-2xl"></i>
+                <div class="group relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-red-500 to-orange-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-red-900/40 to-orange-900/40 backdrop-blur-lg border border-red-500/30 rounded-2xl p-8 h-full transform hover:scale-105 hover:rotate-1 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/25">
+                        <div class="text-center mb-6">
+                            <div class="relative w-20 h-20 mx-auto mb-6">
+                                <div class="absolute inset-0 bg-gradient-to-r from-red-500 to-orange-500 rounded-full animate-glow"></div>
+                                <div class="absolute inset-1 bg-slate-900 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-fire-extinguisher text-red-400 text-3xl animate-pulse"></i>
+                                </div>
+                            </div>
+                            <span class="inline-block bg-red-500/20 text-red-300 px-3 py-1 rounded-full text-sm font-medium mb-4">Prototype</span>
+                            <h3 class="text-2xl font-bold text-white mb-2 font-playfair">Fire Extinguisher System</h3>
+                            <p class="text-red-300 font-medium">Functional Working Model</p>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Fire Extinguisher Prototype</h3>
-                        <p class="text-red-600 font-medium">Functional Working Model</p>
+                        <p class="text-gray-300 leading-relaxed mb-6">Developed an automated fire extinguishing system with advanced sensor integration and smart detection capabilities.</p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="w-2 h-2 bg-red-400 rounded-full"></span>
+                                <span class="w-2 h-2 bg-orange-400 rounded-full"></span>
+                                <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+                            </div>
+                            <div class="text-red-300 text-sm group-hover:text-white transition-colors">View Details →</div>
+                        </div>
                     </div>
-                    <p class="text-gray-600 text-center">Developed a working prototype of an automated fire extinguishing system with sensor integration.</p>
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200">
-                    <div class="text-center mb-4">
-                        <div class="w-16 h-16 bg-green-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <i class="fas fa-globe text-white text-2xl"></i>
+                <div class="group relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-green-900/40 to-emerald-900/40 backdrop-blur-lg border border-green-500/30 rounded-2xl p-8 h-full transform hover:scale-105 hover:-rotate-1 transition-all duration-300 hover:shadow-2xl hover:shadow-green-500/25">
+                        <div class="text-center mb-6">
+                            <div class="relative w-20 h-20 mx-auto mb-6">
+                                <div class="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full animate-glow"></div>
+                                <div class="absolute inset-1 bg-slate-900 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-globe text-green-400 text-3xl animate-pulse"></i>
+                                </div>
+                            </div>
+                            <span class="inline-block bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-sm font-medium mb-4">Web Platform</span>
+                            <h3 class="text-2xl font-bold text-white mb-2 font-playfair">Seva Connect</h3>
+                            <p class="text-green-300 font-medium">DARPAN Featured</p>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Seva Connect</h3>
-                        <p class="text-green-600 font-medium">Web Platform</p>
+                        <p class="text-gray-300 leading-relaxed mb-6">A comprehensive web platform connecting local service providers with customers, presented at DARPAN tech competition.</p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-2">
+                                <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+                                <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+                                <span class="w-2 h-2 bg-teal-400 rounded-full"></span>
+                            </div>
+                            <div class="text-green-300 text-sm group-hover:text-white transition-colors">View Details →</div>
+                        </div>
                     </div>
-                    <p class="text-gray-600 text-center">A web platform for local service providers, presented at DARPAN tech event at BIT Sindri.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Experience & Leadership</h2>
-                <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-slate-900 to-blue-900/30"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-playfair bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+                    Experience & Achievements
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-4"></div>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">Professional experience and leadership journey shaping technical and personal growth</p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="grid lg:grid-cols-2 gap-12 mb-16">
                 <!-- Internships -->
-                <div>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-                        <i class="fas fa-briefcase text-blue-600 mr-3"></i>
-                        Internships
-                    </h3>
+                <div class="space-y-8">
+                    <div class="flex items-center mb-8">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-briefcase text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white font-playfair">Internships</h3>
+                    </div>
+                    
                     <div class="space-y-6">
-                        <div class="bg-white rounded-lg p-6 shadow-md">
-                            <h4 class="text-lg font-semibold text-gray-900 mb-2">BCCL Dhanbad</h4>
-                            <p class="text-blue-600 font-medium mb-2">33KV Substation</p>
-                            <p class="text-gray-600">4 Weeks</p>
-                            <p class="text-gray-700 mt-2">Gained hands-on experience with high-voltage electrical systems and substation operations.</p>
+                        <div class="group relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-sm opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                            <div class="relative bg-gradient-to-br from-blue-900/20 to-purple-900/20 backdrop-blur-lg border border-blue-500/30 rounded-2xl p-6 transform hover:scale-105 transition-all duration-300">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div>
+                                        <h4 class="text-xl font-bold text-white mb-2">BCCL Dhanbad</h4>
+                                        <p class="text-blue-300 font-semibold mb-1">33KV Substation Operations</p>
+                                        <p class="text-purple-300 text-sm">4 Weeks Duration</p>
+                                    </div>
+                                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-bolt text-white text-sm"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-300">Gained hands-on experience with high-voltage electrical systems, substation operations, and power distribution networks.</p>
+                            </div>
                         </div>
                         
-                        <div class="bg-white rounded-lg p-6 shadow-md">
-                            <h4 class="text-lg font-semibold text-gray-900 mb-2">DVC Maithon</h4>
-                            <p class="text-blue-600 font-medium mb-2">Hydel Plant + Central Testing Centre</p>
-                            <p class="text-gray-600">2 Weeks</p>
-                            <p class="text-gray-700 mt-2">Learned about hydroelectric power generation and electrical testing procedures.</p>
+                        <div class="group relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-2xl blur-sm opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                            <div class="relative bg-gradient-to-br from-green-900/20 to-blue-900/20 backdrop-blur-lg border border-green-500/30 rounded-2xl p-6 transform hover:scale-105 transition-all duration-300">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div>
+                                        <h4 class="text-xl font-bold text-white mb-2">DVC Maithon</h4>
+                                        <p class="text-green-300 font-semibold mb-1">Hydel Plant + Testing Centre</p>
+                                        <p class="text-blue-300 text-sm">2 Weeks Duration</p>
+                                    </div>
+                                    <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-water text-white text-sm"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-300">Learned hydroelectric power generation processes, turbine operations, and electrical testing procedures in industrial settings.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Leadership -->
-                <div>
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-                        <i class="fas fa-crown text-yellow-600 mr-3"></i>
-                        Leadership & Activities
-                    </h3>
+                <div class="space-y-8">
+                    <div class="flex items-center mb-8">
+                        <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-crown text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white font-playfair">Leadership</h3>
+                    </div>
+                    
                     <div class="space-y-4">
-                        <div class="bg-white rounded-lg p-6 shadow-md">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-medal text-yellow-500 mr-3"></i>
-                                <h4 class="text-lg font-semibold text-gray-900">House & Class Captain</h4>
+                        <div class="group relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                            <div class="relative bg-gradient-to-br from-yellow-900/20 to-orange-900/20 backdrop-blur-lg border border-yellow-500/30 rounded-xl p-4 transform hover:scale-105 transition-all duration-300">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-medal text-yellow-400 mr-3"></i>
+                                    <h4 class="text-lg font-bold text-white">House & Class Captain</h4>
+                                </div>
+                                <p class="text-gray-300 text-sm">Led class activities and represented house in school competitions</p>
                             </div>
-                            <p class="text-gray-700">Led class activities and represented house in various school competitions and events.</p>
                         </div>
                         
-                        <div class="bg-white rounded-lg p-6 shadow-md">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-calendar-alt text-blue-500 mr-3"></i>
-                                <h4 class="text-lg font-semibold text-gray-900">School Fest Event Planning</h4>
+                        <div class="group relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                            <div class="relative bg-gradient-to-br from-blue-900/20 to-purple-900/20 backdrop-blur-lg border border-blue-500/30 rounded-xl p-4 transform hover:scale-105 transition-all duration-300">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-calendar-alt text-blue-400 mr-3"></i>
+                                    <h4 class="text-lg font-bold text-white">Event Coordinator</h4>
+                                </div>
+                                <p class="text-gray-300 text-sm">Organized cultural and technical events during school festivals</p>
                             </div>
-                            <p class="text-gray-700">Organized and coordinated various cultural and technical events during school festivals.</p>
                         </div>
                         
-                        <div class="bg-white rounded-lg p-6 shadow-md">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-hand-holding-heart text-red-500 mr-3"></i>
-                                <h4 class="text-lg font-semibold text-gray-900">Community Service</h4>
+                        <div class="group relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-pink-500/20 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                            <div class="relative bg-gradient-to-br from-red-900/20 to-pink-900/20 backdrop-blur-lg border border-red-500/30 rounded-xl p-4 transform hover:scale-105 transition-all duration-300">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-hand-holding-heart text-red-400 mr-3"></i>
+                                    <h4 class="text-lg font-bold text-white">Community Service</h4>
+                                </div>
+                                <p class="text-gray-300 text-sm">Organized winter clothing distribution for underprivileged communities</p>
                             </div>
-                            <p class="text-gray-700">Organized winter clothing distribution drive for underprivileged communities.</p>
                         </div>
                     </div>
                 </div>
@@ -339,25 +597,44 @@
             
             <!-- Achievements -->
             <div>
-                <h3 class="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-                    <i class="fas fa-trophy text-yellow-600 mr-3"></i>
-                    Achievements
-                </h3>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-white rounded-lg p-6 shadow-md">
-                        <div class="flex items-center mb-3">
-                            <i class="fab fa-instagram text-pink-500 mr-3 text-2xl"></i>
-                            <h4 class="text-lg font-semibold text-gray-900">Instagram Growth</h4>
+                <div class="flex items-center justify-center mb-12">
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-trophy text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white font-playfair">Key Achievements</h3>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="group relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                        <div class="relative bg-gradient-to-br from-pink-900/40 to-purple-900/40 backdrop-blur-lg border border-pink-500/30 rounded-2xl p-8 h-full transform hover:scale-105 transition-all duration-300">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fab fa-instagram text-white text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white">Social Media Growth</h4>
+                                    <p class="text-pink-300">30K Followers</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300">Built and grew an Instagram page to 30,000 followers using AI tools and strategic content creation.</p>
                         </div>
-                        <p class="text-gray-700">Built and grew an Instagram page to 30,000 followers using AI tools and content strategy.</p>
                     </div>
                     
-                    <div class="bg-white rounded-lg p-6 shadow-md">
-                        <div class="flex items-center mb-3">
-                            <i class="fas fa-lightbulb text-yellow-500 mr-3 text-2xl"></i>
-                            <h4 class="text-lg font-semibold text-gray-900">DARPAN Participation</h4>
+                    <div class="group relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                        <div class="relative bg-gradient-to-br from-yellow-900/40 to-orange-900/40 backdrop-blur-lg border border-yellow-500/30 rounded-2xl p-8 h-full transform hover:scale-105 transition-all duration-300">
+                            <div class="flex items-center mb-4">
+                                <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-lightbulb text-white text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white">DARPAN Competition</h4>
+                                    <p class="text-yellow-300">Tech to Business</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300">Participated in DARPAN innovation competition at BIT Sindri, presenting tech solutions for business challenges.</p>
                         </div>
-                        <p class="text-gray-700">Participated in DARPAN (Tech to Business) competition at BIT Sindri with innovative project ideas.</p>
                     </div>
                 </div>
             </div>
@@ -365,57 +642,120 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-blue-600">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Get In Touch</h2>
-                <div class="w-24 h-1 bg-white mx-auto"></div>
-                <p class="text-blue-100 mt-4 text-lg">Let's connect and discuss opportunities</p>
+    <section id="contact" class="py-20 relative overflow-hidden">
+        <!-- Gradient Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-pink-900"></div>
+        
+        <!-- Animated Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold font-playfair bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+                    Let's Connect
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-4"></div>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">Ready to collaborate on exciting projects and opportunities in electrical engineering</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8 text-center">
+            <div class="grid md:grid-cols-3 gap-8">
                 <!-- Email -->
-                <div class="bg-white bg-opacity-10 rounded-lg p-6 hover:bg-opacity-20 transition-all duration-200">
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <i class="fas fa-envelope text-white text-2xl"></i>
+                <div class="group relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-purple-900/40 to-pink-900/40 backdrop-blur-lg border border-purple-500/30 rounded-2xl p-8 text-center transform hover:scale-105 transition-all duration-300">
+                        <div class="relative w-20 h-20 mx-auto mb-6">
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-glow"></div>
+                            <div class="absolute inset-1 bg-slate-900 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-purple-400 text-2xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Email</h3>
+                        <a href="mailto:sarfarazalam.sa460@gmail.com" class="text-purple-300 hover:text-white transition-colors duration-200 break-all">
+                            sarfarazalam.sa460@gmail.com
+                        </a>
                     </div>
-                    <h3 class="text-white font-semibold mb-2">Email</h3>
-                    <a href="mailto:sarfarazalam.sa460@gmail.com" class="text-blue-100 hover:text-white transition-colors duration-200">
-                        sarfarazalam.sa460@gmail.com
-                    </a>
                 </div>
                 
                 <!-- Phone -->
-                <div class="bg-white bg-opacity-10 rounded-lg p-6 hover:bg-opacity-20 transition-all duration-200">
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <i class="fas fa-phone text-white text-2xl"></i>
+                <div class="group relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-blue-900/40 to-cyan-900/40 backdrop-blur-lg border border-blue-500/30 rounded-2xl p-8 text-center transform hover:scale-105 transition-all duration-300">
+                        <div class="relative w-20 h-20 mx-auto mb-6">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full animate-glow"></div>
+                            <div class="absolute inset-1 bg-slate-900 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-blue-400 text-2xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Phone</h3>
+                        <a href="tel:+919508566869" class="text-blue-300 hover:text-white transition-colors duration-200">
+                            +91 9508566869
+                        </a>
                     </div>
-                    <h3 class="text-white font-semibold mb-2">Phone</h3>
-                    <a href="tel:+919508566869" class="text-blue-100 hover:text-white transition-colors duration-200">
-                        +91 9508566869
-                    </a>
                 </div>
                 
                 <!-- LinkedIn -->
-                <div class="bg-white bg-opacity-10 rounded-lg p-6 hover:bg-opacity-20 transition-all duration-200">
-                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <i class="fab fa-linkedin text-white text-2xl"></i>
+                <div class="group relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-green-900/40 to-emerald-900/40 backdrop-blur-lg border border-green-500/30 rounded-2xl p-8 text-center transform hover:scale-105 transition-all duration-300">
+                        <div class="relative w-20 h-20 mx-auto mb-6">
+                            <div class="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full animate-glow"></div>
+                            <div class="absolute inset-1 bg-slate-900 rounded-full flex items-center justify-center">
+                                <i class="fab fa-linkedin text-green-400 text-2xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">LinkedIn</h3>
+                        <a href="https://linkedin.com/in/sarfaraz-alam" target="_blank" class="text-green-300 hover:text-white transition-colors duration-200 break-all">
+                            linkedin.com/in/sarfaraz-alam
+                        </a>
                     </div>
-                    <h3 class="text-white font-semibold mb-2">LinkedIn</h3>
-                    <a href="https://linkedin.com/in/sarfaraz-alam" target="_blank" class="text-blue-100 hover:text-white transition-colors duration-200">
-                        linkedin.com/in/sarfaraz-alam
-                    </a>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="text-center mt-16">
+                <div class="relative inline-block">
+                    <button class="group relative bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 hover:from-purple-600 hover:via-pink-600 hover:to-blue-600 text-white font-bold py-4 px-12 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25 animate-gradient bg-size-200">
+                        <span class="relative z-10 flex items-center text-lg">
+                            <i class="fas fa-rocket mr-3 group-hover:animate-bounce"></i>
+                            Start a Conversation
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer class="relative bg-slate-900 border-t border-purple-500/20">
+        <div class="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-pink-900/20"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
             <div class="text-center">
-                <p class="text-gray-400">&copy; 2025 Sarfaraz Alam. All rights reserved.</p>
-                <p class="text-gray-500 mt-2">Built with HTML, Tailwind CSS, and JavaScript</p>
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold font-playfair bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
+                        Sarfaraz Alam
+                    </h3>
+                    <p class="text-gray-400">Electrical Engineering Student</p>
+                </div>
+                
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="mailto:sarfarazalam.sa460@gmail.com" class="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                    <a href="tel:+919508566869" class="text-gray-400 hover:text-blue-400 transition-colors duration-200">
+                        <i class="fas fa-phone text-xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/sarfaraz-alam" target="_blank" class="text-gray-400 hover:text-green-400 transition-colors duration-200">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+                
+                <div class="border-t border-gray-700 pt-8">
+                    <p class="text-gray-500 mb-2">&copy; 2025 Sarfaraz Alam. All rights reserved.</p>
+                    <p class="text-gray-600 text-sm">Crafted with passion using modern web technologies</p>
+                </div>
             </div>
         </div>
     </footer>
