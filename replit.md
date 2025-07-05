@@ -78,6 +78,7 @@ This is a static portfolio website for Sarfaraz Alam, an electrical engineering 
 ## Changelog
 - July 05, 2025: Initial setup
 - July 05, 2025: Complete redesign with stunning dark theme, glass morphism effects, gradient animations, and modern visual aesthetics
+- July 05, 2025: Added profile image, fixed DVC Maithon duration (3 weeks), uploaded resume with functional download, enhanced creative animations
 
 ## User Preferences
 
